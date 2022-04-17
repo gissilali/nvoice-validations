@@ -6,7 +6,7 @@ import {
   ValidationResult,
   Validator,
 } from './interfaces';
-const useValidator = (): Validator => {
+const validator = (): Validator => {
   const messages: MessageBag = {};
 
   const parseRule = (rule: string): ParsedRule => {
@@ -76,4 +76,4 @@ const useValidator = (): Validator => {
   };
 };
 
-export default useValidator;
+export default validator;

@@ -1,6 +1,6 @@
-import useValidator from '../src';
+import validator from '../src';
 
-const { validate } = useValidator();
+const { validate } = validator();
 
 const data = {
   name: '',
