@@ -2,9 +2,15 @@
 
 Nvoice Validations provides various rules for you to validate data.
 
-# Validation Quickstart
+## Validation Quickstart
 
-```
+install
+
+``npm i nvoice-validations``
+
+use
+
+```javascript
 // index.js
 import validator from '../src';
 
