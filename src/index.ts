@@ -5,6 +5,7 @@ import {
   Validatable,
   ValidationResult,
   Validator,
+  ValidatorResult,
 } from './interfaces';
 const validator = (): Validator => {
   const messages: MessageBag = {};
@@ -45,7 +46,7 @@ const validator = (): Validator => {
   };
 
   return {
-    validate: (data: Validatable, rules: Rules): Promise<MessageBag> => {
+    validate: (data: Validatable, rules: Rules): Promise<ValidatorResult> => {
       return new Promise(async (resolve, reject) => {
         const attributes = Object.keys(data);
         for (let i = 0; i < attributes.length; i++) {
@@ -70,7 +71,11 @@ const validator = (): Validator => {
           }
         }
 
-        resolve(messages);
+        resolve({
+          passes: () => Object.keys(messages).length === 0,
+          fails: () => Object.keys(messages).length > 0,
+          errors: () => messages,
+        });
       });
     },
   };

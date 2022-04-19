@@ -8,7 +8,7 @@ export interface Rules {
 }
 
 export interface Validatable {
-  [key: string]: string | number | boolean;
+  [key: string]: string | number | boolean | object;
 }
 
 export interface ValidationResult {
@@ -17,7 +17,13 @@ export interface ValidationResult {
 }
 
 export interface Validator {
-  validate(data: Validatable, rules: Rules): Promise<MessageBag>;
+  validate(data: Validatable, rules: Rules): Promise<ValidatorResult>;
+}
+
+export interface ValidatorResult {
+  passes: () => boolean;
+  fails: () => boolean;
+  errors: () => MessageBag;
 }
 
 export interface MessageBag {
