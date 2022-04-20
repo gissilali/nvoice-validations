@@ -2,7 +2,8 @@ import { ValidationResult } from '../interfaces';
 
 export function validateRequired(
   data: any,
-  attribute: string
+  attribute: string,
+  _params: string[] = []
 ): ValidationResult {
   const message = `${attribute} is required`;
 

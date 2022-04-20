@@ -7,6 +7,7 @@ import {
   Validator,
   ValidatorResult,
 } from './interfaces';
+import { toTitleCase } from './utils';
 const validator = (): Validator => {
   const messages: MessageBag = {};
 
@@ -15,12 +16,6 @@ const validator = (): Validator => {
       rule: toTitleCase(rule),
       params: [],
     };
-  };
-
-  const toTitleCase = (str: string): string => {
-    return str.replace(/\w\S*/g, function(txt) {
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
   };
 
   const validateAttribute = async (
