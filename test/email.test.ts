@@ -86,17 +86,9 @@ test('invalid email fails validation test', async () => {
         }
       })
     );
-    // validate(data, rules).then(validatorObject => {
-    //   if (validatorObject.fails()) {
-    //     fails.push(email);
-    //   }
-    // });
   });
 
   await Promise.all(promises);
   const percentagePass = (fails.length / invalidEmails.length) * 100;
   expect(percentagePass).toBeGreaterThanOrEqual(70);
-  //   expect(fails.length).toBe(invalidEmails.length);
-
-  //   expect(fails).toBe(invalidEmails.length);
 });
