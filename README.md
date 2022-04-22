@@ -36,3 +36,10 @@ The field under validation must be present and not empty.
 
 The field under validation must be a valid email address.
 
+**min:number**
+
+The field under validation must be a minimum of specified number
+
+**max:number**
+
+The field under validation must be a maximum of specified number
