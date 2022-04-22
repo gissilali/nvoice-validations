@@ -1,1 +1,1 @@
-["email", "required"]
+["email", "required", "min", "max"]

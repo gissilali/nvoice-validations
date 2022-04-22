@@ -6,8 +6,13 @@ test('all dynamic imports are imported', async () => {
   const promises: Promise<any>[] = [];
   rules.forEach(rule => {
     promises.push(
-      import('../src/rules/validate' + toTitleCase(rule)).then(() => {
-        imports = imports + 1;
+      import('../src/rules/validate' + toTitleCase(rule)).then(imported => {
+        if (imported.hasOwnProperty('validate' + toTitleCase(rule))) {
+          const importedRule = imported['validate' + toTitleCase(rule)];
+          if (typeof importedRule == 'function') {
+            imports++;
+          }
+        }
       })
     );
   });

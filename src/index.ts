@@ -12,9 +12,10 @@ const validator = (): Validator => {
   const messages: MessageBag = {};
 
   const parseRule = (rule: string): ParsedRule => {
+    const [name, ...params] = rule.split(':');
     return {
-      rule: toTitleCase(rule),
-      params: [],
+      rule: toTitleCase(name),
+      params: params,
     };
   };
 
@@ -75,5 +76,23 @@ const validator = (): Validator => {
     },
   };
 };
+
+// const { validate } = validator();
+
+// const doTheThing = async () => {
+//   const data = {
+//     name: 't',
+//   };
+//   const rules = {
+//     name: 'min:3',
+//   };
+
+//   const theThing = await validate(data, rules);
+//   return theThing;
+// };
+
+// doTheThing().then(theThing => {
+//   console.log(theThing);
+// });
 
 export default validator;

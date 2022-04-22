@@ -9,13 +9,13 @@ const matchesExactly = (value: string, pattern: RegExp): boolean => {
 export function validateEmail(
   email: string,
   attribute: string,
-  _params: string[] = []
+  _params: string[] = [],
+  _message: string = `The ${attribute} must be a valid email address`
 ): ValidationResult {
-  const message = `${attribute}  is not a valid email`;
   const regularExpression = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
   return {
     passes: matchesExactly(email, regularExpression),
-    message,
+    message: _message,
   };
 }
