@@ -25,6 +25,11 @@ const rules = {
 };
 
 const validator = await validate(data, rules);
+
+if(validator.fails()) {
+  console.log(validator.errors()); // { name: ['The name field is required.' ]}
+}
+
 ```
 
 ## Available Validation Rules
