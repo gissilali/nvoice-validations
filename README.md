@@ -33,13 +33,14 @@ if(validator.fails()) {
 ```
 
 ## Available Validation Rules
-**required**
-
-The field under validation must be present and not empty.
 
 **email**
 
 The field under validation must be a valid email address.
+
+**required**
+
+The field under validation must be present and not empty.
 
 **min:number**
 
