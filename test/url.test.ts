@@ -1,6 +1,6 @@
 import validator from '../src';
 
-it('is a valid url', async () => {
+it('fails on invalid url with a right error message', async () => {
   const { validate } = validator();
   const data = {
     url: 'hello',
@@ -13,8 +13,24 @@ it('is a valid url', async () => {
   const validation = await validate(data, rules);
 
   expect(validation.passes()).toEqual(false);
-  console.log(validation.errors());
-  //   expect(validation.errors()).toEqual({
-  //     url: ['The url must be a valid url'],
-  //   });
+  expect(validation.errors()).toEqual({
+    url: ['The url must be a valid url'],
+  });
+});
+
+it('passes on valid url with no error message', async () => {
+  const { validate } = validator();
+
+  const data = {
+    url: 'https://www.google.com',
+  };
+
+  const rules = {
+    url: 'url',
+  };
+
+  const validation = await validate(data, rules);
+
+  expect(validation.passes()).toEqual(true);
+  expect(validation.errors()).toEqual({});
 });
